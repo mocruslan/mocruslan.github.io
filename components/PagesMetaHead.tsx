@@ -1,6 +1,13 @@
 import Head from 'next/head';
+import React from "react";
 
-function PagesMetaHead({ title, keywords, description }) {
+interface PagesMetaHeadProps {
+    title?: string;
+    keywords?: string;
+    description?: string;
+}
+
+const PagesMetaHead: React.FC<PagesMetaHeadProps> = ({ title, keywords, description }) => {
 	return (
 		<Head>
 			<meta
@@ -19,7 +26,7 @@ function PagesMetaHead({ title, keywords, description }) {
 PagesMetaHead.defaultProps = {
 	title: 'Next.js & TailwindCSS Portfolio Project',
 	keywords: 'next.js, react, web, ui',
-	keywords: 'Simple and multi-page next.js and react application',
+	description: 'Simple and multi-page next.js and react application',
 };
 
 export default PagesMetaHead;

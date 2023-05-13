@@ -10,9 +10,9 @@ import SamsungImage from '../public/images/brands/samsung_gray.png';
 import CanonImage from '../public/images/brands/canon_gray.png';
 import PumaImage from '../public/images/brands/puma_gray.png';
 
-export const clientsHeading = 'Some of the brands I worked with';
+const clientsHeading: string = 'Some of the brands I worked with';
 
-export const clientsData = [
+const clientsData = [
 	{
 		id: uuidv4(),
 		title: 'Amazon',
@@ -54,3 +54,7 @@ export const clientsData = [
 		img: PumaImage,
 	},
 ];
+
+export {clientsHeading};
+export {clientsData};
+

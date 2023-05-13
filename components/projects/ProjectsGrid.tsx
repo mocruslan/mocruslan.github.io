@@ -1,30 +1,22 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import ProjectSingle from './ProjectSingle';
 import { projectsData } from '../../data/projectsData';
 import ProjectsFilter from './ProjectsFilter';
 
-function ProjectsGrid() {
-	const [searchProject, setSearchProject] = useState();
-	const [selectProject, setSelectProject] = useState();
+interface Project {
+  title: string;
+  category: string;
+}
 
-	// @todo - To be fixed
-	// const searchProjectsByTitle = projectsData.filter((item) => {
-	// 	const result = item.title
-	// 		.toLowerCase()
-	// 		.includes(searchProject.toLowerCase())
-	// 		? item
-	// 		: searchProject == ''
-	// 		? item
-	// 		: '';
-	// 	return result;
-	// });
+const ProjectsGrid: React.FC = () => {
+  const [searchProject, setSearchProject] = useState<string | undefined>();
+  const [selectProject, setSelectProject] = useState<string | undefined>();
 
-	const selectProjectsByCategory = projectsData.filter((item) => {
-		let category =
-			item.category.charAt(0).toUpperCase() + item.category.slice(1);
-		return category.includes(selectProject);
-	});
+  const selectProjectsByCategory = projectsData.filter((item: Project) => {
+    let category = item.category.charAt(0).toUpperCase() + item.category.slice(1);
+    return category.includes(selectProject || '');
+  });
 
 	return (
 		<section className="py-5 sm:py-10 mt-5 sm:mt-10">
@@ -96,7 +88,7 @@ function ProjectsGrid() {
 							id="name"
 							name="name"
 							type="search"
-							required=""
+							required={false}
 							placeholder="Search Projects"
 							aria-label="Name"
 						/>

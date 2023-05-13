@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-lambda": "^3.328.0",
+    "@aws-sdk/client-s3": "^3.325.0",
     "@next/font": "13.2.1",
     "@tailwindcss/forms": "^0.5.3",
     "@types/aws-sdk": "^2.7.0",
     "@types/node": "18.14.2",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "@types/uuid": "^9.0.1",
     "aws-sdk": "^2.1364.0",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.1",
