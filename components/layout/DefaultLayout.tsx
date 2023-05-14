@@ -1,5 +1,5 @@
 import AppHeader from '../shared/AppHeader';
-import AppFooter from '../shared/AppFooter';
+import AppFooter from '../shared/AppFootert';
 import PagesMetaHead from '../PagesMetaHead';
 import React from "react";
 

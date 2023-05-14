@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
+import React, {useState} from 'react';
+import {FiSearch} from 'react-icons/fi';
 import ProjectSingle from './ProjectSingle';
-import { projectsData } from '../../data/projectsData';
+import {projectsData} from '../../data/projectsData';
 import ProjectsFilter from './ProjectsFilter';
 
 interface Project {
-  title: string;
-  category: string;
+    title: string;
+    category: string;
 }
 
 const ProjectsGrid: React.FC = () => {
-  const [searchProject, setSearchProject] = useState<string | undefined>();
-  const [selectProject, setSelectProject] = useState<string | undefined>();
+    const [searchProject, setSearchProject] = useState<string | undefined>();
+    const [selectProject, setSelectProject] = useState<string | undefined>();
 
-  const selectProjectsByCategory = projectsData.filter((item: Project) => {
-    let category = item.category.charAt(0).toUpperCase() + item.category.slice(1);
-    return category.includes(selectProject || '');
-  });
+    const selectProjectsByCategory = projectsData.filter((item: Project) => {
+        let category = item.category.charAt(0).toUpperCase() + item.category.slice(1);
+        return category.includes(selectProject || '');
+    });
 
-	return (
-		<section className="py-5 sm:py-10 mt-5 sm:mt-10">
-			<div className="text-center">
-				<p className="font-general-medium text-2xl sm:text-4xl mb-1 text-ternary-dark dark:text-ternary-light">
-					Projects portfolio
-				</p>
-			</div>
+    return (
+        <section className="py-5 sm:py-10 mt-5 sm:mt-10">
+            <div className="text-center">
+                <p className="font-general-medium text-2xl sm:text-4xl mb-1 text-ternary-dark dark:text-ternary-light">
+                    Projects portfolio
+                </p>
+            </div>
 
-			<div className="mt-10 sm:mt-16">
-				<h3
-					className="
+            <div className="mt-10 sm:mt-16">
+                <h3
+                    className="
                         font-general-regular 
                         text-center text-secondary-dark
                         dark:text-ternary-light
@@ -36,11 +36,11 @@ const ProjectsGrid: React.FC = () => {
                         sm:text-xl
                         mb-3
                         "
-				>
-					Search projects by title or filter by category
-				</h3>
-				<div
-					className="
+                >
+                    Search projects by title or filter by category
+                </h3>
+                <div
+                    className="
                         flex
                         justify-between
                         border-b border-primary-light
@@ -48,10 +48,10 @@ const ProjectsGrid: React.FC = () => {
                         pb-3
                         gap-3
                         "
-				>
-					<div className="flex justify-between gap-2">
+                >
+                    <div className="flex justify-between gap-2">
 						<span
-							className="
+                            className="
                                 hidden
                                 sm:block
                                 bg-primary-light
@@ -61,14 +61,14 @@ const ProjectsGrid: React.FC = () => {
                                 rounded-xl
                                 cursor-pointer
                                 "
-						>
+                        >
 							<FiSearch className="text-ternary-dark dark:text-ternary-light w-5 h-5"></FiSearch>
 						</span>
-						<input
-							onChange={(e) => {
-								setSearchProject(e.target.value);
-							}}
-							className="
+                        <input
+                            onChange={(e) => {
+                                setSearchProject(e.target.value);
+                            }}
+                            className="
                                 ont-general-medium 
                                 pl-3
                                 pr-1
@@ -85,30 +85,30 @@ const ProjectsGrid: React.FC = () => {
                                 text-primary-dark
                                 dark:text-ternary-light
                                 "
-							id="name"
-							name="name"
-							type="search"
-							required={false}
-							placeholder="Search Projects"
-							aria-label="Name"
-						/>
-					</div>
+                            id="name"
+                            name="name"
+                            type="search"
+                            required={false}
+                            placeholder="Search Projects"
+                            aria-label="Name"
+                        />
+                    </div>
 
-					<ProjectsFilter setSelectProject={setSelectProject} />
-				</div>
-			</div>
+                    <ProjectsFilter setSelectProject={setSelectProject}/>
+                </div>
+            </div>
 
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 sm:gap-5">
-				{selectProject
-					? selectProjectsByCategory.map((project, index) => {
-							return <ProjectSingle key={index} {...project} />;
-					  })
-					: projectsData.map((project, index) => (
-							<ProjectSingle key={index} {...project} />
-					  ))}
-			</div>
-		</section>
-	);
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6 sm:gap-5">
+                {selectProject
+                    ? selectProjectsByCategory.map((project, index) => {
+                        return <ProjectSingle key={index} {...project} />;
+                    })
+                    : projectsData.map((project, index) => (
+                        <ProjectSingle key={index} {...project} />
+                    ))}
+            </div>
+        </section>
+    );
 }
 
 export default ProjectsGrid;

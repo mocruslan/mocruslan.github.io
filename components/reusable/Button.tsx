@@ -2,11 +2,17 @@ import React from 'react';
 
 interface ButtonProps {
     title: string;
+    type?: 'button' | 'submit' | 'reset';
     onClickAction?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ title, onClickAction }) => {
-    return <button onClick={onClickAction ? onClickAction : () => {}}>{title}</button>;
+const Button: React.FC<ButtonProps> = ({title, type, onClickAction}) => {
+    return (
+        <button type={type} onClick={onClickAction ? onClickAction : () => {
+        }}>
+            {title}
+        </button>
+    );
 }
 
 export default Button;

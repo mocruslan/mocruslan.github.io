@@ -1,14 +1,22 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from "react";
+
+interface ProjectSingleProps {
+  id: string;
+  img: string;
+  title: string;
+  category: string;
+}
 
 const imageStyle = { maxWidth: '100%', height: 'auto' };
 
-const ProjectSingle = (props) => {
+const ProjectSingle: React.FC<ProjectSingleProps> = (props) => {
 	return (
 		<motion.div
 			initial={{ opacity: 0 }}
-			animate={{ opacity: 1, delay: 1 }}
+			animate={{ opacity: 1}}
 			transition={{
 				ease: 'easeInOut',
 				duration: 0.7,

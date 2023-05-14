@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 const useThemeSwitcher = () => {
     const [theme, setTheme] = useState(
@@ -6,7 +6,7 @@ const useThemeSwitcher = () => {
     );
     const activeTheme = theme === 'dark' ? 'light' : 'dark';
 
-    useEffect(() => {
+    React.useEffect(() => {
         const root = window.document.documentElement;
 
         root.classList.remove(activeTheme);
