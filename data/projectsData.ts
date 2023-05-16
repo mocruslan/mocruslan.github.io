@@ -7,6 +7,23 @@ import {
 	FiYoutube,
 } from 'react-icons/fi';
 
+interface ProjectDetails {
+    id: string;
+    details: string;
+}
+
+interface ProjectImages {
+	id: string;
+    title: string;
+    img: string;
+}
+
+interface CompanyInfo {
+    id: string;
+    title: string;
+    details: string;
+}
+
  const projectsData = [
 	{
 		id: 1,
@@ -767,4 +784,5 @@ import {
 ];
 
 
-export {projectsData};
+export {projectsData };
+export  type { CompanyInfo, ProjectDetails, ProjectImages};

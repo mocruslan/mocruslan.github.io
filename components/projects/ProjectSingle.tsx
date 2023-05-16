@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from "react";
 
 interface ProjectSingleProps {
-  id: string;
+  id: number;
   img: string;
   title: string;
   category: string;

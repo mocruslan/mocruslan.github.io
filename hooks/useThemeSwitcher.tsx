@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const useThemeSwitcher = () => {
+const useThemeSwitcher = (): [string, (theme: string) => void] => {
     const [theme, setTheme] = useState(
         typeof window !== 'undefined' ? localStorage.theme : ''
     );
