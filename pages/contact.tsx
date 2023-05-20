@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import ContactDetails from '../components/contact/ContactDetails';
 import ContactForm from '../components/contact/ContactForm';
 import PagesMetaHead from '../components/PagesMetaHead';
-import React from "react";
+import {NextPage} from "next";
 
-const contact: React.FC = () => {
+const contact: NextPage = () => {
 	return (
 		<div>
 			<PagesMetaHead title="Contact" />

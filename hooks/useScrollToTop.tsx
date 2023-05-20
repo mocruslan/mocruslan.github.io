@@ -12,9 +12,9 @@ const useScrollToTop = () => {
     });
 
     const scrollToTop = () => {
-        if (!showScroll && window.pageYOffset > 400) {
+        if (!showScroll && window.scrollY > 400) {
             setShowScroll(true);
-        } else if (showScroll && window.pageYOffset <= 400) {
+        } else if (showScroll && window.scrollY <= 400) {
             setShowScroll(false);
         }
     };
@@ -25,10 +25,6 @@ const useScrollToTop = () => {
             behavior: 'smooth',
         });
     };
-
-    if (typeof window !== 'undefined') {
-        window.addEventListener('scroll', scrollToTop);
-    }
 
     return (
         <>

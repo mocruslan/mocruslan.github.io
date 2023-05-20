@@ -3,10 +3,9 @@ import {FiClock, FiTag} from 'react-icons/fi';
 import PagesMetaHead from '../../components/PagesMetaHead';
 import {projectsData, ProjectDetails, ProjectImages, CompanyInfo} from '../../data/projectsData';
 import RelatedProjects from '../../components/projects/RelatedProjects';
-import React from "react";
-import {GetServerSidePropsContext} from "next";
+import {GetServerSidePropsContext, NextPage} from "next";
 
-const ProjectSingle: React.FC<{ project: any }> = (props) => {
+const ProjectSingle: NextPage<{ project: any }> = (props) => {
     return (
         <div className="container mx-auto">
             <PagesMetaHead title={props.project.title}/>
@@ -117,9 +116,9 @@ const ProjectSingle: React.FC<{ project: any }> = (props) => {
                         </p>
                         {/* <div className="flex items-center gap-3 mt-5">
 							{props.project.ProjectInfo.SocialSharing.map(
-								(social, index) => {
+								(social, projects) => {
 									<Link
-										key={index}
+										key={projects}
 										href={social.url}
 										target="__blank"
 										passHref={true}

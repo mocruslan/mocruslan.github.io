@@ -3,9 +3,9 @@ import AboutClients from '../components/about/AboutClients';
 import AboutCounter from '../components/about/AboutCounter';
 import AboutMeBio from '../components/about/AboutMeBio';
 import PagesMetaHead from '../components/PagesMetaHead';
-import React from "react";
+import {NextPage} from "next";
 
-const about: React.FC = () => {
+const about: NextPage = () => {
     return (
         <div>
             <PagesMetaHead title="About Me"/>

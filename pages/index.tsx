@@ -3,9 +3,9 @@ import PagesMetaHead from '../components/PagesMetaHead';
 import ProjectsGrid from '../components/projects/ProjectsGrid';
 import Button from '../components/reusable/Button';
 import AppBanner from '../components/shared/AppBanner';
-import React from "react";
+import {NextPage} from "next";
 
-const Home: React.FC = () => {
+const Home: NextPage = () => {
     return (
         <div className="container mx-auto">
             <PagesMetaHead title="Home"/>

@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {motion} from 'framer-motion';
 import {FiMenu, FiMoon, FiSun, FiX} from 'react-icons/fi';
 import HireMeModal from '../HireMeModal';
+import useThemeSwitcher from "../../hooks/useThemeSwitcher";
 import logoLight from '../../public/images/logo-light.svg';
 import logoDark from '../../public/images/logo-dark.svg';
-import useThemeSwitcher from '../../hooks/useThemeSwitcher';
+import Image from "next/image";
+
 
 const AppHeader: React.FC = () => {
     const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -15,7 +16,7 @@ const AppHeader: React.FC = () => {
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
-    }
+    };
 
     const showHireMeModal = () => {
         const htmlElement = document.getElementsByTagName('html')[0];
@@ -26,7 +27,7 @@ const AppHeader: React.FC = () => {
             htmlElement.classList.remove('overflow-y-hidden');
             setShowModal(false);
         }
-    }
+    };
 
     return (
         <motion.nav
@@ -64,7 +65,7 @@ const AppHeader: React.FC = () => {
 
                     {/* Theme switcher small screen */}
                     <div
-                        onClick={() => setTheme(activeTheme)}
+                        onClick={() => setTheme(activeTheme === 'dark' ? 'light' : 'dark')}
                         aria-label="Theme Switcher"
                         className="block sm:hidden ml-0 bg-primary-light dark:bg-ternary-dark p-3 shadow-sm rounded-xl cursor-pointer"
                     >
@@ -108,19 +109,19 @@ const AppHeader: React.FC = () => {
                     }
                 >
                     <div
-                        className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2">
-                        <Link href="/index" aria-label="Projects">
+                        className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 mb-2 sm:py-2">
+                        <Link href="/projects" aria-label="Projects">
                             Projects
                         </Link>
                     </div>
                     <div
-                        className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
+                        className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
                         <Link href="/about" aria-label="About Me">
                             About Me
                         </Link>
                     </div>
                     <div
-                        className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
+                        className="block text-left text-lg text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 mb-2 sm:py-2 border-t-2 pt-3 sm:pt-2 sm:border-t-0 border-primary-light dark:border-secondary-dark">
                         <Link href="/contact" aria-label="Contact">
                             Contact
                         </Link>
@@ -141,22 +142,18 @@ const AppHeader: React.FC = () => {
                 <div
                     className="font-general-medium hidden m-0 sm:ml-4 mt-5 sm:mt-3 sm:flex p-5 sm:p-0 justify-center items-center shadow-lg sm:shadow-none">
                     <div
-                        className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
-                        aria-label="Projects"
-                    >
-                        <Link href="/index">Projects</Link>
+                        className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 mb-2 sm:py-2"
+                        aria-label="Projects">
+                        <Link href="/projects">Projects</Link>
                     </div>
                     <div
-                        className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
-                        aria-label="About Me"
-                    >
+                        className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 mb-2 sm:py-2"
+                        aria-label="About Me">
                         <Link href="/about">About Me</Link>
                     </div>
-
                     <div
-                        className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light  sm:mx-4 mb-2 sm:py-2"
-                        aria-label="Contact"
-                    >
+                        className="block text-left text-lg font-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light sm:mx-4 mb-2 sm:py-2"
+                        aria-label="Contact">
                         <Link href="/contact">Contact</Link>
                     </div>
                 </div>
@@ -189,14 +186,8 @@ const AppHeader: React.FC = () => {
                 </div>
             </div>
             <div>
-                {showModal ? (
-                    <HireMeModal
-                        onClose={showHireMeModal}
-                        onRequest={showHireMeModal}
-                    />
-                ) : null}
+              {showModal && <HireMeModal onClose={showHireMeModal} onRequest={showHireMeModal}/>}
             </div>
-
         </motion.nav>
     );
 }
